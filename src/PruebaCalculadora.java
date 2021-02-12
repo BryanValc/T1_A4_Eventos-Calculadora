@@ -44,6 +44,41 @@ class Calculadora extends JFrame implements ActionListener{
 	JButton btn9 = new JButton("9");
 	JButton btnDot= new JButton(".");
 	
+	public Calculadora() {
+		
+		getContentPane().setLayout(gbl);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setTitle("Calculadora");
+		gbc.fill=GridBagConstraints.BOTH;
+		setVisible(true);
+		
+		btnSumar.addActionListener(this);
+		btnRestar.addActionListener(this);
+		btnMultiplicar.addActionListener(this);
+		btnDividir.addActionListener(this);
+		btnResiduo.addActionListener(this);
+		btn1X.addActionListener(this);
+		btnPotencia.addActionListener(this);
+		btnRaiz.addActionListener(this);
+		btnDel.addActionListener(this);
+		btnCE.addActionListener(this);
+		btnResultado.addActionListener(this);
+		btn0.addActionListener(this);
+		btn1.addActionListener(this);
+		btn2.addActionListener(this);
+		btn3.addActionListener(this);
+		btn4.addActionListener(this);
+		btn5.addActionListener(this);
+		btn6.addActionListener(this);
+		btn7.addActionListener(this);
+		btn8.addActionListener(this);
+		btn9.addActionListener(this);
+		btnDot.addActionListener(this);
+		
+		
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
