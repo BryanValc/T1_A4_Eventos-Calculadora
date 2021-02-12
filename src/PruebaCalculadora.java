@@ -42,6 +42,9 @@ class Calculadora extends JFrame implements ActionListener{
 	JButton btn9 = new JButton("9");
 	JButton btnDot= new JButton(".");
 	
+	String cache = "";
+	char op = ' ';
+	
 	public Calculadora() {
 		
 		getContentPane().setLayout(gbl);
@@ -120,7 +123,106 @@ class Calculadora extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		
+		if (e.getSource()==btn0) {
+			areaTexto.setText(areaTexto.getText()+'0');
+		}else if(e.getSource()==btn1) {
+			areaTexto.setText(areaTexto.getText()+'1');
+		}else if(e.getSource()==btn2) {
+			areaTexto.setText(areaTexto.getText()+'2');
+		}else if(e.getSource()==btn3) {
+			areaTexto.setText(areaTexto.getText()+'3');
+		}else if(e.getSource()==btn4) {
+			areaTexto.setText(areaTexto.getText()+'4');
+		}else if(e.getSource()==btn5) {
+			areaTexto.setText(areaTexto.getText()+'5');
+		}else if(e.getSource()==btn6) {
+			areaTexto.setText(areaTexto.getText()+'6');
+		}else if(e.getSource()==btn7) {
+			areaTexto.setText(areaTexto.getText()+'7');
+		}else if(e.getSource()==btn8) {
+			areaTexto.setText(areaTexto.getText()+'8');
+		}else if(e.getSource()==btn9) {
+			areaTexto.setText(areaTexto.getText()+'9');
+		}else if(e.getSource()==btnResiduo) {
+			op='%';
+			cache=areaTexto.getText();
+			areaTexto.setText("");
+		}else if(e.getSource()==btnCE) {
+			op=' ';
+			cache="";
+			areaTexto.setText("");
+		}else if(e.getSource()==btnDel) {
+			if (areaTexto.getText().length()>0) {
+				areaTexto.setText(areaTexto.getText().substring(0, areaTexto.getText().length()-1));
+			}
+		}else if(e.getSource()==btn1X) {
+			
+			if (areaTexto.getText().length()>0) {
+				double num=Double.parseDouble(areaTexto.getText());
+				if (num!=0) {
+					num=1/num;
+					areaTexto.setText(String.valueOf(num));
+				}
+			}
+		}else if(e.getSource()==btnPotencia) {
+			Double num=Double.parseDouble(areaTexto.getText());
+			num = Math.pow(num, 2);
+			areaTexto.setText(String.valueOf(num));
+		}else if(e.getSource()==btnRaiz) {
+			if (areaTexto.getText().length()>0) {
+				Double num=Double.parseDouble(areaTexto.getText());
+				if (num>0) {
+					num = Math.sqrt(num);
+					areaTexto.setText(String.valueOf(num));
+				}
+			}
+		}else if(e.getSource()==btnDividir) {
+			cache = areaTexto.getText();
+			op='/';
+			areaTexto.setText("");
+		}else if(e.getSource()==btnMultiplicar) {
+			cache = areaTexto.getText();
+			op='*';
+			areaTexto.setText("");
+		}else if(e.getSource()==btnRestar) {
+			cache = areaTexto.getText();
+			op='-';
+			areaTexto.setText("");
+		}else if(e.getSource()==btnSumar) {
+			cache = areaTexto.getText();
+			op='+';
+			areaTexto.setText("");
+		}else if(e.getSource()==btnDot) {
+			if (!areaTexto.getText().contains(".")) {
+				areaTexto.setText(areaTexto.getText()+'.');
+			}
+		}else if(e.getSource()==btnResultado) {
+			if(op!=' ') {
+				double num1 = Double.parseDouble(cache);
+				double num2 = Double.parseDouble(areaTexto.getText());
+				double num3 = 0;
+				switch (op) {
+				case '+':
+					num3=num1+num2;
+					break;
+				case '-':
+					num3=num1-num2;
+					break;
+				case '*':
+					num3=num1*num2;
+						break;
+				case '/':
+					num3=num1/num2;
+					break;
+				case '%':
+					num3=num1%num2;
+					break;
+				default:
+					break;
+				}
+				areaTexto.setText(String.valueOf(num3));
+			}
+		}
 		
 	}
 	
