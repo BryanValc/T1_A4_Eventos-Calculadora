@@ -4,6 +4,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -76,6 +78,18 @@ class Calculadora extends JFrame implements ActionListener{
 		btn8.addActionListener(this);
 		btn9.addActionListener(this);
 		btnDot.addActionListener(this);
+		
+		areaTexto.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent ke) {
+				String value = areaTexto.getText();
+				int l = value.length();
+				if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
+					areaTexto.setEditable(true);
+				} else {
+					areaTexto.setEditable(false);
+				}
+			}
+		});
 		
 		inst(areaTexto,0,0,4,1,GridBagConstraints.BOTH);
 		
